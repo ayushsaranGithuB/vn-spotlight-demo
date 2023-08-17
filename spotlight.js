@@ -20,7 +20,7 @@ recordList.push({ artist: "The Beatles", album: "A Hard Day's Night", genre: "Ro
 window.onload = function () {
     document.getElementById("record-list").innerHTML = "";
     for (let i = 0; i < recordList.length; i++) {
-        document.getElementById("record-list").innerHTML += "<li class='record'>" + "<div class='record-cover'><img class='cover' src='" + recordList[i].cover + "'><img class='disc' src='images/vinyl_trans.png'></div>" + "<div class='record-info'><h2 class='record-title'>" + recordList[i].album + "</h2><h3 class='record-artist'>" + recordList[i].artist + "</h3><p class='record-genre'>" + recordList[i].genre + "</p><p class='record-year'>" + recordList[i].year + "</p></div></li>";
+        document.getElementById("record-list").innerHTML += "<li class='record' id='record_"+i+"'>" + "<div class='record-cover'><img class='cover' src='" + recordList[i].cover + "'><div class='disc'><img class='sticker' src='" + recordList[i].cover + "'><img class='vinyl' src='images/vinyl_trans.png'></div></div>" + "<div class='record-info'><h2 class='record-title'>" + recordList[i].album + "</h2><h3 class='record-artist'>" + recordList[i].artist + "</h3><p class='record-genre'>" + recordList[i].genre + "</p><p class='record-year'>" + recordList[i].year + "</p><div class='button_actions'><button class='button_listen' onclick='playTrack("+i+")'>Listen</button><button class='button_buy'>Buy</button></div></div></li>";
     }
 
 
@@ -51,5 +51,18 @@ const observer = new IntersectionObserver(entries => {
     elements.forEach(el => {
         observer.observe(el);
         });  
+
+}
+
+// Play the track when the listen button is clicked
+function playTrack(i) {
+
+    //remove cover from view by sliding it out of viewport on the left
+    cover = document.getElementById("record_"+i).querySelector("img.cover");
+    cover.classList.add("slide-out");
+
+    // increase the size of the disc
+    disc = document.getElementById("record_"+i).querySelector("div.disc");
+    disc.classList.add("play");
 
 }

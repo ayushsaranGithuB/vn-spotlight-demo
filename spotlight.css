@@ -53,15 +53,43 @@ div.record-cover img.cover{
     z-index: 2;
 }
 
-.record-cover img.disc{
+/* On Listen Activation */
+
+.inView div.record-cover img.slide-out{
+    animation-name: record-cover-leaves;
+}
+
+.inView div.record-cover div.play{
+    /* animation-name: disc-plays; */
+    transform: translateX(0px) rotate(0deg) scale(1.5);
+}
+
+.record-cover div.disc{
     width: 380px;
     height: 380px;
+    overflow: hidden;
     z-index: 1;
     position: absolute;
     filter: drop-shadow(1px 1px 1px rgba(1, 1, 1, 0.0));
 }
 
-.inView div.record-cover img.cover{
+div.disc img.vinyl{
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+
+div.disc img.sticker{
+    position: absolute;
+    z-index: 2;
+    width: 40%;
+    height: 40%;
+    top: 32%;
+    left: 30%;
+}
+
+.inView .record-cover .cover{
     opacity: 1;
     filter: drop-shadow(4px 4px 6px rgba(1, 1, 1, 0.29));
     animation-fill-mode: forwards;
@@ -70,8 +98,8 @@ div.record-cover img.cover{
 }
 
 
-.inView div.record-cover img.disc{
-    transform: translateX(90px) rotate(100deg);
+.inView .record-cover .disc{
+    transform: translateX(110px) rotate(100deg);
     transition: all 1.5s ease;
     transition-delay: 250ms;       
     filter: drop-shadow(4px -8px 3px rgba(1, 1, 1, 0.19));
@@ -108,7 +136,24 @@ div.record-cover img.cover{
     margin: 0;
 }
 
+/* Buttons for Actions */
 
+.button_actions{
+    margin-top: 30px;
+}
+
+.button_actions button{
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #9c9c9c73;
+    margin-right: 20px;
+    cursor: pointer;
+    color: #666;
+}
+
+.button_listen{
+
+}
 
 
 @keyframes record-enters {
@@ -132,5 +177,23 @@ div.record-cover img.cover{
         transform: translateY(0px);
         opacity: 1;
         filter: drop-shadow(4px 3px 1px rgba(95, 152, 100, 0.3));
+    }
+}
+
+@keyframes record-cover-leaves {
+    0% {
+        transform:scale(1.2) translateX(-70px);
+    }
+    100% {
+        transform:scale(1.2) translateX(-700px);
+    }
+}
+
+@keyframes disc-plays {
+    0% {
+        transform: translateX(110px) rotate(100deg);
+    }
+    100% {
+        transform:scale(2) translateX(0px) rotate(0deg);
     }
 }
