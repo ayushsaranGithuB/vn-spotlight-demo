@@ -80,11 +80,36 @@ div.record-cover img.cover{
 
 #record-list li div.record-info{
     width: 30%;
-    margin-left: 10%;
+    margin-left: 5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
+.inView .record-info{
+    color: #ffffff;
+    animation: record-info-enters 1s ease forwards;
+    animation-delay: 300ms;
+    opacity: 0;
+}
+
+.record-info .record-title{
+    font-size: 50px;
+    margin: 0;
+}
+
+.record-info .record-artist{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.record-info .record-genre{
+    font-size: 20px;
+    margin: 0;
+}
+
+
+
 
 @keyframes record-enters {
 	0% {
@@ -95,5 +120,17 @@ div.record-cover img.cover{
 	}
     100% {
         transform:scale(1.2) translateX(-70px);
+    }
+}
+
+@keyframes record-info-enters {
+    0% {
+        transform: translateY(25px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+        filter: drop-shadow(4px 3px 1px rgba(95, 152, 100, 0.3));
     }
 }
